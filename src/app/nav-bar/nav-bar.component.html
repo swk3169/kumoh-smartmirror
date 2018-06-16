@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" [ngClass]="{'scrolled':isScrolled}" style="background-color: rgba(32, 30, 32, 0.1);">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" routerLink="/main-page" [ngClass]="{'changed':isScrolled}" style="color:white">KUMOH SMART</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button><div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="go('mirror')" [ngClass]="{'changed':isScrolled}" style="cursor:pointer">
+            <span [ngClass]="{'changed':isScrolled}">
+              Mirror
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="go('calendar')" [ngClass]="{'changed':isScrolled}" style="cursor:pointer">
+            <span [ngClass]="{'changed':isScrolled}">
+              Schedule Calendar
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="go('diet1')" [ngClass]="{'changed':isScrolled}" style="cursor:pointer">Cafeteria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="go('reservation')" [ngClass]="{'changed':isScrolled}" style="cursor:pointer">330 Reservation</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

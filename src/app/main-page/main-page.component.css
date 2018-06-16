@@ -1,0 +1,19 @@
+.circleBtn{
+  width: 120px;
+	height: 100px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color:rgba(236, 105, 204, 0.719);
+  border-color:rgba(236, 105, 204, 0.719);
+  color: white;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  cursor:pointer;
+}
+
+body {
+  font-family: Tahoma;
+}
+header {
+  text-align: center;
+}
