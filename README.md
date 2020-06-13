@@ -1,8 +1,2 @@
-# kumoh-smartmirror
-
-Facial recognition based artificial intelligence Smart mirror
-
-since : 2018.02.19 ~ 2018.05.29<br/>
-member : 손우규, 유광상 <br/>
-Tool : Rasbian, VS Code<br/>
-Project Management : GitHub, Slack<br/>
+# KUMOH SMART(금오 스마트)
+![kumohsmart_photo](https://user-images.githubusercontent.com/50092350/70522118-d9fb1d00-1b83-11ea-85d9-836d04f2ff89.png)

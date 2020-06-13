@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" [ngClass]="{'scrolled':isScrolled}" style="background-color: rgba(32, 30, 32, 0.1);">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="main-page" style="color:white" [ngClass]="{'changedA':isScrolled}">KUMOH SMART</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'changed':isScrolled}" href="newspeed-a" style="cursor:pointer">
+            <span>NEWSFEED</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'changed':isScrolled}" href="newspeed-c" style="cursor:pointer">
+            <span>MY TIMELINE</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'changed':isScrolled}" href="newspeed-b" style="cursor:pointer">
+            <span>USER LIST</span>
+          </a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a routerLink="/newspeed-c" [ngClass]="{'changed':isScrolled}">
+            <img class="img-circle" align="left" src={{user_image}}>
+          </a>
+        </li>&nbsp;&nbsp;&nbsp;&nbsp;
+        <li style="padding-top:5px;">
+          <a (click)="logout()" style="color:white;cursor:pointer"[ngClass]="{'changed':isScrolled}">
+            <i class="fa fa-sign-out fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

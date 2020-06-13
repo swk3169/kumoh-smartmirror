@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>식단조회</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  </head>
+  <body>
+    <% if(member =="null") {%>
+    <script type="text/javascript">
+      alert("로그인이 필요합니다!");
+      location.href="/"
+    </script>
+    <%} else {%>
+      <form name="editMember" action="/member_information/submit" method="post" onsubmit="onWriteSubmit()">
+        <h1><%= title%></h1>
+        <img style="border: 3px solid gold; border-radius: 70px; -moz-border-radius: 70px; -khtml-border-radius: 70px; -webkit-border-radius: 70px; "src="<%=image_address%>">
+        <h2><%= member%></h2>
+        <h2>학적 </h2>
+        <input type="radio" value="학부생" name="radio_classification" id="radio_classification" <% if(classification == "학부생") {%> checked = "checked" <% } %>>학부생</input>
+        <input type="radio" value="대학원생" name="radio_classification" id="radio_classification" <% if(classification == "대학원생") {%> checked = "checked" <% } %>>대학원생</input>
+        <input type="radio" value="교수" name="radio_classification" id="radio_classification" <% if(classification == "교수") {%> checked = "checked" <% } %>>교수</input>
+        <input type="radio" value="졸업생" name="radio_classification" id="radio_classification" <% if(classification =="졸업생") {%> checked = "checked" <% } %>>졸업생</input>
+        <h2>입학연도 </h2>
+        <input type="number" name="entrance_school_year" placeholder="YYYY" min="1960" max="2100" maxlength="4" oninput="maxLengthCheck(this)" <% if(entrance_school_year) {%> value="#{entrance_school_year}" <% } %>/>
+        <input type="submit" value="수정">
+        <script>
+          //maxLengthCheck
+          function maxLengthCheck(object) {
+            if(object.value.length > object.maxLength) {
+              object.value = object.value.slice(0, object.maxLength)
+            }
+
+            if(object.value > new Date().getFullYear()) {
+              object.value = 2018
+            } //입력 된 숫자의 값이 2019년 이상이면 2018년으로 설정, 매 해마다 자동으로 갱신, 수정 필요 없음
+
+            if(object.value.length == 4 && object.value < 1960) {
+              object.value = 1960
+            } //입력 된 숫자의 길이가 4자리이고 값이 1960년 이하이면 1960년으로 설정
+          }
+        </script>
+      </form>
+      <script>
+        function onWriteSubmit()
+        {
+          if ( $("#radio_classification").val().trim() == "" )
+          {
+            var message = "학적을 체크해주세요";
+            $("#radio_classification").val("");
+            $("#radio_classification").focus();
+            alert(message);
+            return false;
+          }
+
+          if ( $("#entrance_school_year").val().trim() == "" )
+          {
+            var message = "입학연도를 입력해주세요";
+            $("#entrance_school_year").val("");
+            $("#entrance_school_year").focus();
+            alert(message);
+            return false;
+        }
+      </script>
+    <%}%>
+  </body>
+</html>

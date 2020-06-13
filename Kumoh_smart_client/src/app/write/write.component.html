@@ -1,0 +1,55 @@
+<div class="content-upper writebox">
+  <table>
+    <tr>
+      <td rowspan="2">
+        <!--<a href="https://user_time.com">-->
+          <img class="content-upper-table-picture img-circle" src="{{user_image}}">
+        <!--</a>-->
+      </td>
+
+      <td class="content-upper-table-name">
+        <!--<a href="https://user_time.com" class="content-upper-table-name-link">-->
+          {{user_name}}
+        <!--</a>-->
+      </td>
+      <td rowspan="2" class="content-upper-table-blank"></td>
+    </tr>
+    <tr>
+      <td class="content-upper-table-time">
+        {{date}}
+      </td>
+    </tr>
+  </table>
+  <form class="writeCard" [formGroup]="contentForm" (ngSubmit)="write(contentForm, fileInput.files)">
+    <div class="form-group" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".5rem">
+      <div class="content-upper">
+        <div class="container">
+          <div>
+            <img *ngIf="imageSrc" [src]="imageSrc" class="card-img-top" src="http://placehold.it/750x300" alt="" style="max-width: 100%; height: auto;">
+          </div>
+          <br>
+          <div class="form-group">
+            <textarea formControlName="content" class="form-control" rows="5" id="comment"></textarea>
+            <!--<input formControlName="keyword" height="5" id="comment" type="text" class="form-control">-->
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <label class="btn btn-light">
+          <i class="far fa-images"></i>
+          사진 올리기
+          <input type="file" (change)="change(fileInput.files)" id="file-input" accept="image/*" #fileInput>
+        </label>
+        <!--<input type="file" (change)="change($event)" id="file-input">-->
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-6"></div>
+        <div class="col-lg-4 col-6 rbtn">
+          <button class="button" type="submit">
+            <span>게시 </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

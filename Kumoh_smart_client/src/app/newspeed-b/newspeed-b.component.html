@@ -1,0 +1,41 @@
+<body>
+  <app-newspeed-nav></app-newspeed-nav>
+  <section class="masthead2" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="section-heading text-white" style="font-weight: 600; font-size: 300%">KUMOH SMART</h2>
+          <p class="text-faded mb-4">Kumoh National Institute of Technology SNS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <div class="join-user">
+    Kumoh Smart Friends
+  </div>
+  <br>
+  <div></div>
+  <div class="join-user">
+    총 {{allUserNumber}}명
+  </div>
+  <br>
+  <br>
+  <div class="row use-list">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6" style="border-bottom: 1.5px solid rgba(211, 211, 211, 0.671); ">
+      <div class="row" style="margin-left:15px;margin-right:15px">
+        <span *ngFor="let row of arr" style="margin-left:18px">
+          <div style="text-align: center">
+            <img class="img-circle" src="{{row.image_address}}">
+            <p class="font-setting">{{row.nickname}}</p>
+          </div>
+        </span>
+      </div>
+
+
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+
+</body>

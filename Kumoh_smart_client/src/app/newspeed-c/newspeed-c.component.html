@@ -1,0 +1,276 @@
+<body>
+  <app-newspeed-nav></app-newspeed-nav>
+  <section class="masthead2" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 mx-auto text-center">
+          <h2 class="section-heading text-white" style="font-weight: 600; font-size: 300%">KUMOH SMART</h2>
+          <p class="text-faded mb-4">Kumoh National Institute of Technology SNS</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="row box">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6">
+        <!-- 로고 -->
+        <div class="logo">
+          {{user_name}} 님의 타임라인
+        </div>
+
+        <!-- 1번째 박스(프로필) -->
+        <div class="profile">
+          <div class="row">
+            <div class="col-12 col-lg-8 information">
+              <img class="img-circle" align="left" src="{{user_image}}">
+              <p class="font-setting">{{user_name}}</p>
+              <p class="font-setting2">
+                컴퓨터 소프트웨어공학과
+                <br>{{user_email}}
+              </p>
+            </div>
+            <div class="col-lg-4 sub-information">
+              <div style="text-align:center">
+                <p style="margin-bottom:0px">게시글</p>
+                <p style="font-size:20px">{{totalCount}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 내 게시글(두번째 박스) -->
+        <div class="gaesigul">
+          작성 게시글
+        </div>
+        <div class="mytimeline">
+          <div style="margin-bottom:30px; border-bottom:1px solid rgba(211, 211, 211, 0.671);">
+            <app-write (reloadRequest)="onLoadPage(1)"></app-write>
+          </div>
+          <div>
+            <br>
+          </div>
+          <div>
+            <div *ngFor="let row of arr">
+              <br>
+              <section class="lineup" style="background-color:white">
+                <!-- 게시글 상단부분(머릿글) -->
+                <div class="content-upper">
+                  <table>
+                    <tr>
+                      <td rowspan="2">
+                        <!--<a href="https://user_time.com">-->
+                          <img class="content-upper-table-picture img-circle" src={{row.image_address}}>
+                        <!--</a>-->
+                      </td>
+
+                      <td class="content-upper-table-name">
+                        <!--<a href="https://user_time.com" class="content-upper-table-name-link">-->
+                          {{row.nickname}}
+                        <!--</a>-->
+                      </td>
+                      <td rowspan="2" class="content-upper-table-blank"></td>
+                    </tr>
+                    <tr>
+                      <td class="content-upper-table-time">
+                        {{row.moddate}}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <!-- 게시글 중간부분(내용) -->
+                <div class="content-center">
+                  <div class="content-center-title">
+                    <img *ngIf='row.image_path' src="http://202.31.202.191:443/images/{{row.image_path}}" style='height: 100%; width: 100%; object-fit: contain'>
+                    <strong>
+                      {{row.content}}
+                    </strong>
+                  </div>
+                  <!-- <div class="content-center-upload-image-div">
+                                                          <img src=<%="../uploads/" + selected_article.image_file%> class="content-center-upload-image">
+                                            </div> -->
+                </div>
+
+                <!-- 게시글 하단부분(댓글 입력부분) -->
+                <div class="content-bottom">
+                  <div class="content-bottom-option">
+                    <label class="btn btn-primary active" data-toggle="modal" data-target="#likeModal" (click)="onLoadLikeList(row.idx)">
+                      <span class="glyphicon glyphicon-ok"> Like </span>
+                    </label>
+                    <label class=" btn btn-outline-primary">
+                      {{row.like_num}}
+                    </label>
+                    <label class="btn btn-success" (click)="onLoadComment(row.idx)" data-toggle="modal" data-target="#myModal">
+                      <span class="glyphicon glyphicon-ok"> 댓글 </span>
+                    </label>
+                    <label class="btn btn-outline-success">
+                      {{row.comment_count}}
+                    </label>
+
+
+                    <a *ngIf='row.user_id == user_id' data-toggle="modal" (click)="deletePost(row.idx)">
+                      <span class='fa fa-trash-o' style="cursor:pointer"></span>
+                    </a>
+                    <!--<a *ngIf='row.user_id== user_id' data-toggle="modal" href="#modal_update">
+                          <span class='fa fa-pencil-square-o'></span>
+                        </a>-->
+
+
+                  </div>
+                </div>
+
+
+                <!-- 게시물 삭제에 대한 모달로써 사용자 의도 묻는 부분 -->
+                <div id="modal_trash" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="modal-title">게시물을 삭제하시겠습니까?</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>삭제 기능에 오류가 생겨 작업중입니다. 조금만 기다려 주세요</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" (click)="deletePost(row.idx)" class="btn btn-default" data-dismiss="modal">delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 게시물 삭제에 대한 모달로써 사용자 의도 묻는 부분 -->
+                <div id="modal_update" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="modal-title">게시물을 수정 하시겠습니까?</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <p>게시글 수정시, 등록된 사진은 수정이 불가합니다.
+                          <br>재등록은 게시글 삭제후 진행하세요.
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom">
+                  <div class="row">
+                    <div class="col-lg-4 col-4">
+                      <span *ngIf='row.check_like== "True"'>
+                        <button type="button" (click)="onClickLike(row.idx)" class="btn btn-outline-light text-blue">
+                          <i class="fa fa-thumbs-o-up"></i>&nbsp; 좋아요
+                        </button>
+                      </span>
+                      <span *ngIf='row.check_like== "False"'>
+                        <button type="button" (click)="onClickLike(row.idx)" class="btn btn-outline-light text-dark">
+                          <i class="fa fa-thumbs-o-up"></i>&nbsp; 좋아요
+                        </button>
+                      </span>
+                    </div>
+                    <div class="col-lg-4 col-4">
+                      <button type="button" (click)="onLoadComment(row.idx)" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-commenting-o"></i> &nbsp;댓글달기
+                      </button>
+                    </div>
+                    <div class="col-lg-4 col-4">
+                      <button type="button" class="btn btn-outline-light text-dark">
+                        <i class="fa fa-reply"></i>&nbsp; 공유하기
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">댓글</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+
+                      <!-- Modal body -->
+                      <div *ngFor="let commentRow of commentArr" class="modal-body" style="word-break:break-all">
+                        <img class="replyImg" src="{{commentRow.image_address}}"> {{commentRow.nickname}} &nbsp;&nbsp; {{commentRow.content}}
+                      </div>
+                      <form class="writeCommentCard" [formGroup]="commentForm" (submit)="writeComment(commentForm)">
+                        <div class="input-group mb-3">
+
+                          <input type="text" formControlName="comment" class="form-control" placeholder="댓글 입력" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">댓글 달기</button>
+                          </div>
+
+                        </div>
+                      </form>
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="reloadPage()">Close</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+            <!-- 좋아요 리스트에 대한 모달 -->
+            <div class="modal" id="likeModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">이 게시물을 좋아하는 사람</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body" style="word-break:break-all">
+                    <div class="row" style="margin-left:15px">
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-8">
+                        <div class="row">
+                          <span span *ngFor="let likeListRow of likeListArr" style="margin-left:10px">
+                            <div style="text-align: center">
+                              <img class="content-upper-table-picture img-circle2" src="{{likeListRow.image_address}}">
+                              <p>{{likeListRow.nickname}}</p>
+                            </div>
+                          </span>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                      </div>
+                      <div class="col-lg-2"></div>
+
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="reloadPage()">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              </section>
+            </div>
+            <div class="footer" style="text-align: center">
+              <br>
+              <a *ngFor="let empty of pageArr; let i = index;" (click)="onLoadPage(i+startPage)" class="boxCount">{{i+startPage}} </a>
+              <br>
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+
+
+</body>

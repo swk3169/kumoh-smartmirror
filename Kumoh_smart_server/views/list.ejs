@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(document).scroll(function() {
+          var maxHeight = $(document).height();
+          var currentScroll = $(window).scrollTop() + $(window).height();
+
+          if (maxHeight <= currentScroll + 100) {
+            alert("마지막 페이지입니다.");
+            $.ajax({
+              // Append next contents
+
+            })
+          }
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <body>
+      <h2><%= number%></h2>
+      <h1><%= write %></h1>
+      <form method="post" action="/board/write" onsubmit="onWriteSubmit()">
+        <table border="2">
+          <tr>
+            <th>제목</th>
+            <td><input type="text" name="title" id="title" required /></td>
+          </tr>
+          <tr>
+            <th>글쓴이</th>
+            <td><input type="text" name="nickname" id="nickname" required/></td>
+          </tr>
+          <tr>
+            <th>비밀번호</th>
+            <td><input type="text" name="user_id" id="user_id" required/></td>
+          </tr>
+          <tr>
+            <th>내용</th>
+            <td><textarea cols="50" role="12" name="content" id="content" required></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" value="등록"></td>
+          </tr>
+        </table>
+      </form>
+    <script>
+      function onWriteSubmit()
+      {
+        if ( $("#nickname").val().trim() == "" )
+        {
+          var message = "아이디를 입력해 주세요";
+          $("#nickname").val("");
+          $("#nickname").focus();
+          alert(message);
+          return false;
+        }
+
+        if ( $("#title").val().trim() == "" )
+        {
+          var message = "제목을 입력해 주세요";
+          $("#title").val("");
+          $("#title").focus();
+          alert(message);
+          return false;
+        }
+
+        if ( $("#content").val().trim() == "" )
+        {
+          var message = "본문 내용을 입력해 주세요";
+          $("#content").val("");
+          $("#content").focus();
+          alert(message);
+          return false;
+        }
+
+        if ( $("#user_id").val().trim() == "" )
+        {
+          var message = "패스워드를 입력해 주세요";
+          $("#user_id").val("");
+          $("#user_id").focus();
+          alert(message);
+          return false;
+        }
+      }
+    </script>
+
+    <h1><%= read %></h1>
+
+    <%
+    for(var i = 0; i<rows.length; i++)
+    {
+    %>
+    <table border="2">
+      <tr>
+        <th>번호</th>
+        <td><%=rows[i].idx%></td>
+        <th>글쓴이</th>
+        <td><%=rows[i].nickname%></td>
+      </tr>
+      <tr>
+        <th>제목</th>
+        <td colspan="5"><%=rows[i].title%></td>
+      </tr>
+      <tr>
+        <th>작성일</th>
+        <td colspan="2"><%=rows[i].regdate%></td>
+        <th>수정일</th>
+        <td colspan="2"><%=rows[i].moddate%></td>
+      </tr>
+      <tr>
+        <td colspan="6" height="400" ><%=rows[i].content%></td>
+      </tr>
+  
+      <div class="comments">
+      <th>댓글</th>
+      <td>
+        <form action="/board/writeComment" method="post">
+          <input type="hidden" name="boarder_idx" id="boarder_idx" value="<%=rows[i].idx%>">
+          <textarea type="text" name="content" id = "content"></textarea>
+          <input class="button" type="submit" value="comment">
+        </form>
+    </div>
+  </td>
+    </table>
+    <%
+    }
+    %>
+  </body>
+</html>

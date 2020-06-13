@@ -1,0 +1,345 @@
+.circleBtn{
+  width: 120px;
+	height: 100px;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color:rgba(236, 105, 204, 0.719);
+  border-color:rgba(236, 105, 204, 0.719);
+  color: white;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  cursor:pointer;
+}
+
+body {
+  font-family: Tahoma;
+}
+header {
+  text-align: center;
+}
+#calendar {
+  width: 100%;
+}
+#calendar a {
+  color: #8e352e;
+  text-decoration: none;
+}
+#calendar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+#calendar li {
+  display: block;
+  float: left;
+  width: 14.342%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+#calendar ul.weekdays {
+  height: 40px;
+  background: #8e352e;
+}
+#calendar ul.weekdays li {
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 20px;
+  border: none !important;
+  padding: 10px 6px;
+  color: #fff;
+  font-size: 13px;
+}
+#calendar .days li {
+  height: 180px;
+}
+#calendar .days li:hover {
+  background: #d3d3d3;
+}
+#calendar .date {
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 4px;
+  background: #333;
+  color: #fff;
+  width: 20px;
+  border-radius: 50%;
+  float: right;
+}
+#calendar .event {
+  clear: both;
+  display: block;
+  font-size: 13px;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  line-height: 14px;
+  background: #e4f2f2;
+  border: 1px solid #b5dbdc;
+  color: #009aaf;
+  text-decoration: none;
+}
+#calendar .event-desc {
+  color: #666;
+  margin: 3px 0 7px 0;
+  text-decoration: none;
+}
+#calendar .other-month {
+  background: #f5f5f5;
+  color: #666;
+}
+/* ============================
+                Mobile Responsiveness
+   ============================*/
+@media (max-width: 768px) {
+  #calendar .weekdays, #calendar .other-month {
+    display: none;
+  }
+  #calendar li {
+    height: auto !important;
+    border: 1px solid #ededed;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: -1px;
+  }
+  #calendar .date {
+    float: none;
+  }
+}
+
+/*식단*/
+.a-tag-cursor {
+  cursor: pointer;
+}
+.content-comment-reaction-comment {
+  padding-bottom: 5pt;
+}
+
+.modal-header {
+  padding-top: 0pt;
+  margin-top: 0pt;
+  padding-bottom: 5pt;
+}
+
+.under-slide {
+  width: 100%;
+  height: 500px;
+}
+
+.badge1 {
+  background-color: red;
+}
+
+.meal-body .meal-header {
+  padding: 16em 0 12em 0;
+}
+
+.meal-table {
+  width: 100%;
+}
+
+.meal-slide-body a {
+  text-decoration: none;
+}
+
+.meal-table-sikdang-blank {
+  width: 3%;
+}
+
+.meal-reaction-image {
+  width: 30px;
+  height: 30px;
+}
+
+.meal-reaction-modal-div {
+  height: 100pt;
+}
+
+.meal-table-title {
+  text-align: center;
+  margin-bottom: -20pt;
+  margin-top: 10pt;
+}
+
+.meal-reaction-modal-title {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 15pt;
+}
+
+.meal-reaction-modal-div-img-name-time {
+  padding-left: 30pt;
+  padding-right: 30pt;
+  font-size: 10pt;
+}
+
+.meal-slide-body {
+  height: 500px;
+  margin-bottom: 40pt;
+}
+
+.meal-reaction-modal-div-content {
+  padding-left: 30pt;
+  padding-right: 30pt;
+  padding-top: 2pt;
+}
+
+.meal-table-sikdang {
+  width: 30%;
+  text-align: center;
+  margin-bottom: 30pt;
+}
+
+.meal-select {
+  background-color: white;
+  border-radius: 4px;
+  font-size: 12pt;
+  width: auto;
+  height: 25pt;
+
+}
+.under-slide {
+  margin-top: 0pt;
+  margin-bottom: 100pt;
+}
+
+.carousel-inner hr {
+  margin-top: 7pt;
+  margin-bottom: 7pt;
+}
+
+.container-mobile {
+display: none;
+}
+
+/*배경*/
+.col-list {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 30pt;
+  border: 0.1px solid #666;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px #666;
+  height: 400px;
+}
+
+/*글자색*/
+.col-list .col-head {
+  color: white;
+  border-bottom: thick solid #666;
+  border-radius: 5px 5px 0 0;
+  padding: 5pt;
+}
+
+.col-list .col-head h2 {
+  margin-top: 7px;
+  margin-bottom: 5px;
+  font-size: 2em;
+}
+
+.col-list .t1 .col-head {
+  background-color: #8e352e;
+}
+
+.col-list .t2 .col-head {
+  background-color: #8e352e;
+}
+
+.col-list .t3 .col-head {
+  background-color: #8e352e;
+}
+
+/*조식 중식 석식 부분 크기*/
+.list-unstyled li {
+  font-size: 1.2em;
+  padding:62px;
+  margin: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(0, 52, 72);
+  opacity: 0.90;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.masthead-nav>li {
+  display: inline-block;
+}
+
+.masthead-nav>li+li {
+  margin-left: 20px;
+}
+
+.masthead-nav>li>a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, .95);
+  border-bottom: 2px solid transparent;
+}
+
+.masthead-nav>li>a:hover, .masthead-nav>li>a:focus {
+  background-color: transparent;
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+.masthead-nav>.active>a, .masthead-nav>.active>a:hover, .masthead-nav>.active>a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+/* tab slider */
+
+#carousel-lower .nav a small {
+  display: block;
+}
+
+#carousel-lower .nav {
+  background: #eee;
+}
+
+#carousel-lower .nav a {
+  border-radius: 0px;
+}
+
+.tabSlider {
+  padding-left: 0;
+  padding-right: 0;
+}
