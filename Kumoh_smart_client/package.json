@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "@types/hammerjs": "^2.0.35",
-    "angular": "^1.7.0",
+    "angular": "^1.8.0",
     "angular2-carousel": "^1.0.14",
     "angular4-carousel": "^3.1.8",
     "bootstrap": "^4.1.1",
